@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity(), SimpleCallbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        SimpleAdapter(R.layout.list_item, this@MainActivity)
 
         simpleAdapter = SimpleAdapter(R.layout.list_item, this@MainActivity)
 
