@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity(), SimpleCallbacks {
         setContentView(R.layout.activity_main)
         SimpleAdapter(R.layout.list_item, this@MainActivity)
 
+        simpleAdapter = SimpleAdapter(R.layout.list_item, this@MainActivity)
+
         list.apply {
             adapter = simpleAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -28,21 +30,29 @@ class MainActivity : AppCompatActivity(), SimpleCallbacks {
     }
 
     private fun dummyDump(){
-        simpleAdapter!!.addItem(Person(R.drawable.ic_launcher_background, "Background"))
-        simpleAdapter!!.addItem(Person(R.drawable.ic_launcher_foreground, "Foreground"))
+        val p = Person(R.drawable.preview, "One")
+        simpleAdapter!!.addItem(p)
+        simpleAdapter!!.addItem(Person(R.drawable.preview, "Two"))
+        simpleAdapter!!.addItem(Person(R.drawable.preview, "Three"))
+        simpleAdapter!!.addItem(Person(R.drawable.preview, "Four"))
+        simpleAdapter!!.addItem(Person(R.drawable.preview, "Five"))
+        simpleAdapter!!.addItem(Person(R.drawable.preview, "Six"))
+        simpleAdapter!!.addItem(Person(R.drawable.preview, "Seven"))
     }
 
     override fun onViewClicked(view: View, item: Any, position: Int) {
-        Toast.makeText(applicationContext, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        item as Person
+        Toast.makeText(applicationContext, "Item ${item.name} at position $position clicked", Toast.LENGTH_SHORT).show()
+        simpleAdapter!!.removeItem(item)
     }
 
     override fun bindView(view: View, item: Any, position: Int) {
-        val person = item as Person
-        val name = view.text //text is the ID of the View in the list item layout
+        item as Person // cast to access its attributes
+        val name = view.textView //textView is the ID of the View in the list item layout
         val image = view.image //image is also an ID in the layout
 
         //bind data to the views
         name.text = item.name
-        image.setImageResource(person.image) //both using modelName and item work
+        image.setImageResource(item.image) //both using modelName and item work
     }
 }
