@@ -1,5 +1,28 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+    bintrayRepo = "SimpleAdapter"
+    bintrayName = "com.revosleap.simpleadapter"
+
+    libraryName = "simpleadapter"
+
+    publishedGroupId = "com.revosleap.simpleadapter"
+    artifact = "SimpleAdapter"
+    libraryVersion = "1.0.0"
+
+    libraryDescription = 'A simplified recyclerview adapter'
+    siteUrl = 'https://github.com/Kevin-Kip/SimpleAdapter'
+    gitUrl = 'https://github.com/Kevin-Kip/SimpleAdapter.git'
+    developerId = 'Kevin-Kip'
+    developerName = 'Kevin Kiprotich'
+    developerEmail = 'kevkiprotich@gmail.com'
+    licenseName = 'MIT license'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT license"]
+}
 
 android {
     compileSdkVersion 28
@@ -33,4 +56,10 @@ dependencies {
 }
 repositories {
     mavenCentral()
+}
+//Add these lines to publish library to bintray.
+// This is the readymade scripts created by user nuuneoi to make uploading to bintray easy
+if(project.rootProject.file('local.properties').exists()){
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
