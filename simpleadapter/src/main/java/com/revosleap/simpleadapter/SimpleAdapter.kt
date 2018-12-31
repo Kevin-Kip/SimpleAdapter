@@ -49,6 +49,16 @@ class SimpleAdapter(private val layout: Int, private val callbacks: SimpleCallba
         notifyDataSetChanged()
     }
 
+    fun addItem(position: Int, item: Any){
+        items.add(position, item)
+        notifyItemInserted(position)
+    }
+
+    fun addItem(item: Any){
+        items.add(item)
+        notifyItemInserted(items.size - 1)
+    }
+
     class ViewHolder(itemView: View, private val callbacks: SimpleCallbacks): RecyclerView.ViewHolder(itemView){
         fun bind(item: Any){
             callbacks.bindView(itemView, item, adapterPosition)
