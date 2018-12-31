@@ -1,5 +1,8 @@
 package com.revosleap.simpleadapter
 
+import android.view.View
+
 interface SimpleCallbacks{
-    fun bindView()
+    fun onViewClicked(view: View, item: Any, position: Int)
+    fun bindView(view: View, item: Any, position: Int)
 }
