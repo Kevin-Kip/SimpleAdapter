@@ -1,3 +1,5 @@
+[ ![Download](https://api.bintray.com/packages/kevinkiprotich/SimpleAdapter/SimpleAdapter/images/download.svg) ](https://bintray.com/kevinkiprotich/SimpleAdapter/SimpleAdapter/_latestVersion)
+
 ## SimpleAdapter
 Simplified recyclerview adapter for android.
 ## Table of Contents
