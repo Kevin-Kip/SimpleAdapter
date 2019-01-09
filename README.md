@@ -78,7 +78,7 @@ override fun bindView(view: View, item: Any, position: Int) {
 <h3 id="methods">Methods</h3>
 
 All the methods provided by the library are:
-1. `kotlin addManyItems(list: MutableList<Any>)` - appends the received list to the existing one.
+1. `addManyItems(list: MutableList<Any>)` - appends the received list to the existing one.
 2. `changeItems(list: MutableList<Any>)` - replaces the existing list with one received. 
 3. `removeItem(position: Int)` - removes item at the specified position.
 4. `removeItem(item: Any)` - removes the received item from the list.
