@@ -17,7 +17,7 @@ Coming in a few minutes...
 ```gradle
 dependencies {
   ...
-  implementation ''
+  implementation 'com.revosleap.simpleadapter:SimpleAdapter:1.0.0'
 }
 ```
 <h3 id="usage">Usage</h3>
