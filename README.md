@@ -1,3 +1,5 @@
+<a href="https://codeclimate.com/github/Kevin-Kip/SimpleAdapter/maintainability"><img src="https://api.codeclimate.com/v1/badges/449b61300a6c3b7345e9/maintainability" /></a>
+
 ## SimpleAdapter (yet to publish)
 Simplified recyclerview adapter for android.
 ## Table of Contents
