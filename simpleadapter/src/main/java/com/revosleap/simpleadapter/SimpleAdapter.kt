@@ -62,6 +62,9 @@ class SimpleAdapter(private val layout: Int, private val callbacks: SimpleCallba
         fun bind(item: Any){
             callbacks.bindView(itemView, item, adapterPosition)
             itemView.setOnClickListener { callbacks.onViewClicked(it, item, adapterPosition) }
+            itemView.setOnLongClickListener { callbacks.onViewLongClicked(it, item, adapterPosition)
+                return@setOnLongClickListener true
+            }
         }
     }
 }

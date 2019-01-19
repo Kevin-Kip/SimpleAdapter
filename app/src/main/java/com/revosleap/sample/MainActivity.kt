@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity(), SimpleCallbacks {
     override fun onViewClicked(view: View, item: Any, position: Int) {
         item as Person
         Toast.makeText(applicationContext, "Item ${item.name} at position $position clicked", Toast.LENGTH_SHORT).show()
-        simpleAdapter!!.removeItem(item)
     }
 
     override fun bindView(view: View, item: Any, position: Int) {
@@ -53,5 +52,10 @@ class MainActivity : AppCompatActivity(), SimpleCallbacks {
         //bind data to the views
         name.text = item.name
         image.setImageResource(item.image) //both using modelName and item work
+    }
+
+    override fun onViewLongClicked(it: View?, item: Any, position: Int) {
+        item as Person
+        Toast.makeText(applicationContext, "Item ${item.name} at position $position long clicked", Toast.LENGTH_SHORT).show()
     }
 }
