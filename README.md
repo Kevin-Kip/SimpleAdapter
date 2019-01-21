@@ -19,7 +19,7 @@ dependencies {
  }  
 ```  
 <h3 id="usage">Usage</h3>  
-Your activity/fragment needs to implement `SimpleCallbacks`, which is the interface for handling the library's callbacks :smile:, like:  
+Your activity/fragment needs to implement `SimpleCallbacks` , which is the interface for handling the library's callbacks :smile:, like:  
   
 > Kotlin  
 ```kotlin  
