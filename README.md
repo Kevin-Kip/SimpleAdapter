@@ -1,5 +1,8 @@
-## SimpleAdapter (yet to publish)  
+## SimpleAdapter
 Simplified recyclerview adapter for android.  
+
+[ ![Download](https://api.bintray.com/packages/carloscj6/Libs/SimpleAdapter/images/download.svg?version=1.0.0) ](https://bintray.com/carloscj6/Libs/SimpleAdapter/1.0.0/link)
+
 ## Table of Contents  
 1. [Gradle dependency](#gradle-dependency)  
 2. [Usage](#usage)  
@@ -10,12 +13,11 @@ Simplified recyclerview adapter for android.
 7. [License](#license)  
   
 <h3 id="gradle-dependency">Gradle-dependency</h3>  
-Coming in a few minutes...  
-  
+   
 ```gradle  
 dependencies {  
  ... 
- implementation 'com.revosleap.simpleadapter:SimpleAdapter:1.0.0'
+ implementation "com.revosleap.adapter:SimpleAdapter:$latest_version"
  }  
 ```  
 <h3 id="usage">Usage</h3>  
