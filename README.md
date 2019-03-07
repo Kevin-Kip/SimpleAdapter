@@ -29,11 +29,11 @@ class MainActivity : AppCompatActivity(), SimpleCallbacks
 > Kotlin
 ```kotlin
 val callbacks = object: SimpleCallbacks{
-override fun onViewClicked(view: View, item: Any, position: Int) {}  
+    override fun onViewClicked(view: View, item: Any, position: Int) {}  
   
-override fun bindView(view: View, item: Any, position: Int) {}  
+    override fun bindView(view: View, item: Any, position: Int) {}  
   
-override fun onViewLongClicked(it: View?, item: Any, position: Int) {}
+    override fun onViewLongClicked(it: View?, item: Any, position: Int) {}
 }
 ```
 This will implemet `onViewClicked` , `onViewLongClicked` and `bindView` methods.  
@@ -61,14 +61,14 @@ Attach the adapter to the recyclerview like below and you're good to go.
 ```kotlin  
 override fun onViewClicked(view: View, item: Any, position: Int) {    
     item as Person    
-    Toast.makeText(applicationContext, "Item ${item.name} at position $position clicked", Toast.LENGTH_SHORT).show()    
+    toast("Item ${item.name} at position $position clicked")    
 	simpleAdapter!!.removeItem(item) // removes the clicked item from list
 }  
 ```  
 ```kotlin
 override fun onViewLongClicked(it: View?, item: Any, position: Int) {  
     item as Person  
-    Toast.makeText(applicationContext, "Item ${item.name} at position $position long clicked", Toast.LENGTH_SHORT).show()  
+    toast("Item ${item.name} at position $position long clicked")  
 }
 ```
 ```kotlin  
@@ -78,11 +78,12 @@ val person = Person(R.drawable.preview, "One") simpleAdapter!!.addItem(person)
 ```kotlin  
 override fun bindView(view: View, item: Any, position: Int) {    
     item as Person // smart cast to access its attributes    
-  val name = view.textView //textView is the ID of the View in the list item layout    
-  val image = view.image //image is also an ID in the layout    
+    val name = view.textView //textView is the ID of the View in the list item layout    
+    val image = view.image //image is also an ID in the layout    
     
- //bind data to the views  name.text = item.name    
-image.setImageResource(item.image) //both using modelName and item work }  
+    //bind data to the views  name.text = item.name    
+    image.setImageResource(item.image) //both using modelName and item work 
+}  
 ```  
   
 <img src="art/device1.png" width="300"/> <img src="art/device2.png" width="300"/>  
@@ -118,7 +119,7 @@ Made with :heart: by [Kevin Kiprotich](kevinkip.rf.gd)
   
 MIT License    
     
-Copyright (c) 2018 Kevin Kiprotich    
+Copyright (c) 2019 Kevin Kiprotich    
     
 Permission is hereby granted, free of charge, to any person obtaining a copy    
 of this software and associated documentation files (the "Software"), to deal    
