@@ -1,5 +1,8 @@
-## SimpleAdapter (yet to publish)  
+## SimpleAdapter
 Simplified recyclerview adapter for android.  
+
+[ ![Download](https://api.bintray.com/packages/carloscj6/Libs/SimpleAdapter/images/download.svg?version=1.0.0) ](https://bintray.com/carloscj6/Libs/SimpleAdapter/1.0.0/link)
+
 ## Table of Contents  
 1. [Gradle dependency](#gradle-dependency)  
 2. [Usage](#usage)  
@@ -10,12 +13,11 @@ Simplified recyclerview adapter for android.
 7. [License](#license)  
   
 <h3 id="gradle-dependency">Gradle-dependency</h3>  
-Coming in a few minutes...  
-  
+   
 ```gradle  
 dependencies {  
  ... 
- implementation 'com.revosleap.simpleadapter:SimpleAdapter:1.0.0'
+ implementation "com.revosleap.adapter:SimpleAdapter:$latest_version"
  }  
 ```  
 <h3 id="usage">Usage</h3>  
@@ -25,15 +27,19 @@ Your activity/fragment needs to implement `SimpleCallbacks` , which is the inter
 ```kotlin  
 class MainActivity : AppCompatActivity(), SimpleCallbacks  
 ```  
+> Java
+```java  
+class MainActivity extends AppCompatActivity implements SimpleCallbacks  
+```  
 ### OR
 > Kotlin
 ```kotlin
 val callbacks = object: SimpleCallbacks{
-    override fun onViewClicked(view: View, item: Any, position: Int) {}  
+	override fun onViewClicked(view: View, item: Any, position: Int) {}  
   
-    override fun bindView(view: View, item: Any, position: Int) {}  
+	override fun bindView(view: View, item: Any, position: Int) {}  
   
-    override fun onViewLongClicked(it: View?, item: Any, position: Int) {}
+	override fun onViewLongClicked(it: View?, item: Any, position: Int) {}
 }
 ```
 This will implemet `onViewClicked` , `onViewLongClicked` and `bindView` methods.  
@@ -45,14 +51,24 @@ Initialize the adapter as follows:
 ```kotlin  
 val simpleAdapter = SimpleAdapter(R.layout.list_item, callbacks)  
 ```  
+> Java
+```java  
+SimpleAdapter simpleAdapter = new SimpleAdapter(R.layout.list_item, callbacks)  
+```  
   
 Attach the adapter to the recyclerview like below and you're good to go.  
 > Kotlin  
-```kotlin list.apply {    
-  adapter = simpleAdapter    
-  layoutManager = LinearLayoutManager(this@MainActivity)    
-  //of course you need a layout manager  
+```kotlin
+ list.apply {    
+	   adapter = simpleAdapter    
+	  layoutManager = LinearLayoutManager(this@MainActivity)    
+	  //of course you need a layout manager  
 }  
+```
+>Java
+```java
+ list.setAdapter(simpleAdapter);    
+ list.setLlayoutManager(new LinearLayoutManager(this@MainActivity)); 
 ```  
   
 <h3 id="samples"> Samples</h3>  
@@ -61,14 +77,14 @@ Attach the adapter to the recyclerview like below and you're good to go.
 ```kotlin  
 override fun onViewClicked(view: View, item: Any, position: Int) {    
     item as Person    
-    toast("Item ${item.name} at position $position clicked")    
+    Toast.makeText(applicationContext, "Item ${item.name} at position $position clicked", Toast.LENGTH_SHORT).show()    
 	simpleAdapter!!.removeItem(item) // removes the clicked item from list
 }  
 ```  
 ```kotlin
 override fun onViewLongClicked(it: View?, item: Any, position: Int) {  
     item as Person  
-    toast("Item ${item.name} at position $position long clicked")  
+    Toast.makeText(applicationContext, "Item ${item.name} at position $position long clicked", Toast.LENGTH_SHORT).show()  
 }
 ```
 ```kotlin  
@@ -78,12 +94,11 @@ val person = Person(R.drawable.preview, "One") simpleAdapter!!.addItem(person)
 ```kotlin  
 override fun bindView(view: View, item: Any, position: Int) {    
     item as Person // smart cast to access its attributes    
-    val name = view.textView //textView is the ID of the View in the list item layout    
-    val image = view.image //image is also an ID in the layout    
+  val name = view.textView //textView is the ID of the View in the list item layout    
+  val image = view.image //image is also an ID in the layout    
     
-    //bind data to the views  name.text = item.name    
-    image.setImageResource(item.image) //both using modelName and item work 
-}  
+ //bind data to the views  name.text = item.name    
+image.setImageResource(item.image) //both using modelName and item work }  
 ```  
   
 <img src="art/device1.png" width="300"/> <img src="art/device2.png" width="300"/>  
@@ -119,7 +134,7 @@ Made with :heart: by [Kevin Kiprotich](kevinkip.rf.gd)
   
 MIT License    
     
-Copyright (c) 2019 Kevin Kiprotich    
+Copyright (c) 2018 Kevin Kiprotich    
     
 Permission is hereby granted, free of charge, to any person obtaining a copy    
 of this software and associated documentation files (the "Software"), to deal    
