@@ -88,7 +88,8 @@ override fun onViewLongClicked(it: View?, item: Any, position: Int) {
 }
 ```
 ```kotlin  
-val person = Person(R.drawable.preview, "One") simpleAdapter!!.addItem(person)  
+    val person = Person(R.drawable.preview, "One") 
+    simpleAdapter!!.addItem(person)  
 ```  
   
 ```kotlin  
@@ -100,6 +101,46 @@ override fun bindView(view: View, item: Any, position: Int) {
  //bind data to the views  name.text = item.name    
 image.setImageResource(item.image) //both using modelName and item work }  
 ```  
+
+```java
+private SimpleCallbacks simpleCallbacks = new SimpleCallbacks() {
+        @Override
+        public void onViewClicked(@NonNull View view, @NonNull Object o, int i) {
+        }
+
+        @Override
+        public void bindView(@NonNull View view, @NonNull Object o, int i) {
+            ShoppingItem item = (ShoppingItem) o;
+
+            SquareImageView imageView = view.findViewById(R.id.cart_item_image);
+            TextView itemName = view.findViewById(R.id.cart_item_name);
+            TextView itemPrice = view.findViewById(R.id.cart_item_price);
+            ImageButton itemMinus = view.findViewById(R.id.cart_item_minus);
+            EditText itemCount = view.findViewById(R.id.cart_item_count);
+            ImageButton itemPlus = view.findViewById(R.id.cart_item_plus);
+            ImageButton itemRemove = view.findViewById(R.id.cart_item_remove);
+
+            Picasso.get()
+                    .load(item.getItemImage())
+                    .resize(70, 70)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .into(imageView);
+            itemName.setText(item.getItemName());
+            float price = item.getSelectedCount() * item.getItemPrice();
+            itemPrice.setText(String.valueOf(price));
+            itemCount.setText(item.getSelectedCount(), TextView.BufferType.EDITABLE);
+
+            itemMinus.setOnClickListener(buttonClicked(Commons.MINUS, item));
+            itemPlus.setOnClickListener(buttonClicked(Commons.PLUS, item));
+            itemRemove.setOnClickListener(buttonClicked(Commons.REMOVE, item));
+        }
+
+        @Override
+        public void onViewLongClicked(View view, @NonNull Object o, int i) {
+        }
+    };
+```
   
 <img src="art/device1.png" width="300"/> <img src="art/device2.png" width="300"/>  
   
@@ -113,6 +154,7 @@ All the methods provided by the library are:
 5. `clearItems()` - removes all items in the list making it blank. :wink:  
 6. `addItem(position: Int, item: Any)` - inserts the received item into the specified position within the list.  
 7. `addItem(item: Any)` - appends the received item to the end of the list.  
+8. `getPositionOf(item: Any)` - find the index of an object.
   
 <h3 id="contribution">Contribution</h3>  
   
