@@ -58,6 +58,10 @@ class SimpleAdapter(private val layout: Int, private val callbacks: SimpleCallba
         notifyItemInserted(items.size - 1)
     }
 
+    fun getPositionOf(item: Any): Int{
+        return items.indexOf(item)
+    }
+
     class ViewHolder(itemView: View, private val callbacks: SimpleCallbacks): RecyclerView.ViewHolder(itemView){
         fun bind(item: Any){
             callbacks.bindView(itemView, item, adapterPosition)
